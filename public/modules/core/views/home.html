@@ -1,32 +1,42 @@
 <section data-ng-controller="HomeController">
-    <h1 class="text-center">THANK YOU FOR DOWNLOADING MEAN.JS</h1>
-    <section>
-        <p>
-        	Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
-        </p>
-        <dl>
-            <dt>MongoDB</dt>
-            <dd>
-                Go through <a target="_blank" href="http://mongodb.org">MongoDB Official Website</a> and proceed to its <a target="_blank" href="http://docs.mongodb.org/manual/">Great Manual</a>, which should help you understand NoSQL and MongoDB better.
-            </dd>
-            <dt>Express</dt>
-            <dd>
-                The best way to understand Express is through its <a target="_blank" href="http://expressjs.com"> Official Website</a>, particularly <a target="_blank" href="http://expressjs.com/guide.html">The Express Guide</a>; you can also go through this <a target="_blank" href="http://stackoverflow.com/questions/8144214/learning-express-for-node-js">StackOverflow Thread</a> for more resources.
-            </dd>
-            <dt>AngularJS</dt>
-            <dd>
-                Angular's <a target="_blank" href="http://angularjs.org">Official Website</a> is a great starting point. You can also use <a target="_blank" href="http://www.thinkster.io/">Thinkster Popular Guide</a>, and the <a target="_blank" href="https://egghead.io/">Egghead Videos</a>.
-            </dd>
-            <dt>Node.js</dt>
-            <dd>
-                Start by going through <a target="_blank" href="http://nodejs.org">Node.js Official Website</a> and this <a target="_blank" href="http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js">StackOverflow Thread</a>, which should get you going with the Node.js platform in no time.
-            </dd>
-        </dl>
-        <p class="alert alert-info">
-            When you're done with those resources and feel you understand the basic principals continue to the <a target="_blank" href="http://meanjs.org/docs.html">MEAN.JS Documentation</a>.
-        </p>
-        <br>
-        <br>Enjoy &amp; Keep Us Updated,
-        <br>The MEAN.JS Team.
-    </section>
+    <h1 class="text-center">Shippable Test Application</h1>
+    <p>
+        Welcome to the Shippable test application!
+    </p>
+    <p>
+        Try adding an item.
+    </p>
+	<section id="todoapp">
+		<header id="header">
+			<form id="todo-form" ng-submit="addTodo()">
+				<input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+			</form>
+		</header>
+		<section id="main" ng-show="todos.length" ng-cloak>
+			<input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+			<label for="toggle-all">Mark all as complete</label>
+			<ul id="todo-list">
+				<li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+					<div class="view">
+						<input class="toggle" type="checkbox" ng-model="todo.completed">
+						<label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+						<button class="destroy" ng-click="removeTodo(todo)"></button>
+					</div>
+					<form ng-submit="doneEditing(todo)">
+						<input class="edit" ng-trim="false" ng-model="todo.title" todo-escape="revertEditing(todo)" ng-blur="doneEditing(todo)" todo-focus="todo == editedTodo">
+					</form>
+				</li>
+			</ul>
+		</section>
+		<footer id="footer" ng-show="todos.length" ng-cloak>
+			<span id="todo-count"><strong>{{remainingCount}}</strong>
+				<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+			</span>
+			<button id="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+		</footer>
+	</section>	
+	<script src="lib/todomvc-common/base.js"></script>
+	<script src="modules/core/services/todoStorage.js"></script>
+	<script src="modules/core/directives/todoFocus.js"></script>
+	<script src="modules/core/directives/todoEscape.js"></script>
 </section>
