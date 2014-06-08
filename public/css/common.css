@@ -36,10 +36,10 @@ button {
 }
 
 body {
-	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font: 14px 'Open Sans',sans-serif;
 	line-height: 1.4em;
 	background: #eaeaea url('bg.png');
-	color: #4d4d4d;
+	color: #777;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
@@ -117,10 +117,6 @@ input[type="checkbox"] {
 	z-index: 2;
 	border-bottom: 1px solid #6c615c;
 	background: #2C5D80;
-	background: -webkit-gradient(linear, left top, left bottom, from(rgba(132, 110, 100, 0.8)),to(rgba(101, 84, 76, 0.8)));
-	background: -webkit-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
-	background: linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#9d8b83', EndColorStr='#847670');
 	border-top-left-radius: 1px;
 	border-top-right-radius: 1px;
 }
