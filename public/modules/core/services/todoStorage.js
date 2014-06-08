@@ -7,15 +7,15 @@ angular.module('core')
 	.factory('todoStorage', function () {
 		'use strict';
 
-		var STORAGE_ID = 'todos-angularjs';
-
+		var todos = [];
+		
 		return {
 			get: function () {
-				return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+				return todos;
 			},
 
 			put: function (todos) {
-				localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+				this.todos = todos;
 			}
 		};
 	});
